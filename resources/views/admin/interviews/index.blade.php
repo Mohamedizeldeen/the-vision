@@ -35,7 +35,6 @@
                     <select name="status" class="form-select">
                         <option value="">All Status</option>
                         <option value="published" {{ request('status') == 'published' ? 'selected' : '' }}>Published</option>
-                        <option value="draft" {{ request('status') == 'draft' ? 'selected' : '' }}>Draft</option>
                     </select>
                 </div>
                 <div class="col-md-4">

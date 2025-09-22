@@ -1,8 +1,7 @@
 <nav id="sidebar" class="sidebar">
     <div class="sidebar-header">
         <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center text-decoration-none">
-           
-            <span class="sidebar-title">The Vision</span>
+            <img src="{{ asset('img/visionLogoWhite.jpg') }}" alt="The Vision" class="img-fluid rounded" style="height: 120px; width: auto;" >
         </a>
     </div>
 

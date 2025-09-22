@@ -180,20 +180,10 @@
         <div class="row mt-3">
             <div class="col-12">
                 <div class="d-flex justify-content-between">
-                    <form action="{{ route('admin.interviews.destroy', $interview) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-outline-danger" 
-                                data-confirm-delete="Are you sure you want to delete this interview?">
-                            <i class="fas fa-trash me-1"></i>Delete Interview
-                        </button>
-                    </form>
                     
                     <div class="d-flex gap-2">
                         <a href="{{ route('admin.interviews.index') }}" class="btn btn-outline-secondary">Cancel</a>
-                        <button type="submit" name="action" value="draft" class="btn btn-outline-primary">
-                            <i class="fas fa-save me-1"></i>Save as Draft
-                        </button>
+                        
                         <button type="submit" name="action" value="publish" class="btn btn-success">
                             <i class="fas fa-paper-plane me-1"></i>{{ $interview->published_at ? 'Update' : 'Publish' }}
                         </button>
@@ -201,6 +191,14 @@
                 </div>
             </div>
         </div>
+    </form>
+    <form class="mt-8" action="{{ route('admin.interviews.destroy', $interview) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger mt-2" 
+                                data-confirm-delete="Are you sure you want to delete this interview?">
+                            <i class="fas fa-trash me-1"></i>Delete Interview
+                        </button>
     </form>
 @endsection
 

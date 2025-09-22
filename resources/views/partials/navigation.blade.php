@@ -4,7 +4,7 @@
         <div class="flex justify-between items-center">
             <div class="logo">
                 <a href="/">
-                    <img class="w-[100px] sm:w-[120px] animate-float" src="{{ asset('img/visionLogoWhite.png') }}" alt="The Vision">
+                    <img class="w-[100px] sm:w-[120px] animate-float" src="{{ asset('img/visionLogoWhite.jpg') }}" alt="The Vision">
                 </a>
             </div>
             
@@ -71,6 +71,8 @@
     
     <!-- Mobile Navigation Menu -->
     <div class="mobile-menu">
+
+
         <div class="flex flex-col items-center justify-center space-y-8 text-center w-full h-full px-6 py-8 min-h-screen">
             <a href="/" class="text-white text-2xl font-medium hover:text-gray-300 transition-all duration-300 {{ request()->routeIs('home') || request()->is('/') ? 'text-gray-300' : '' }}" onclick="closeMobileMenu()">
                 <i class="fas fa-home mr-3"></i>Home
@@ -90,38 +92,8 @@
                     <i class="fas fa-info-circle mr-3"></i>About
                 </a>
             @endif
+          
             
-            <!-- Mobile Action Button -->
-            <div class="pt-8 border-t border-gray-700 w-full">
-                @if(request()->is('/'))
-                    <a href="#contact" class="btn-gradient px-6 py-3 rounded-full transition-all duration-300 shadow-md font-medium text-lg inline-flex items-center" onclick="closeMobileMenu()">
-                        Contact Us
-                    </a>
-                @else
-                    @auth
-                        <a href="{{ route('admin.dashboard') }}" class="btn-gradient px-6 py-3 rounded-full transition-all duration-300 shadow-md font-medium text-lg inline-flex items-center" onclick="closeMobileMenu()">
-                            <i class="fas fa-cog mr-2"></i>Admin Panel
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="btn-gradient px-6 py-3 rounded-full transition-all duration-300 shadow-md font-medium text-lg inline-flex items-center" onclick="closeMobileMenu()">
-                            <i class="fas fa-sign-in-alt mr-2"></i>Login
-                        </a>
-                    @endauth
-                @endif
-            </div>
-            
-            <!-- Social Links -->
-            <div class="flex space-x-6 pt-4">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-twitter fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-instagram fa-2x"></i>
-                </a>
-            </div>
         </div>
     </div>
 </header>

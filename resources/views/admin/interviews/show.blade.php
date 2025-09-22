@@ -130,27 +130,7 @@
                     <div class="d-grid gap-2">
                         <a href="{{ route('admin.interviews.edit', $interview) }}" class="btn btn-outline-primary">
                             <i class="fas fa-edit me-1"></i>Edit Interview
-                        </a>
-                        
-                        @if(!$interview->published_at)
-                            <form action="{{ route('admin.interviews.update', $interview) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('PUT')
-                                <input type="hidden" name="published_at" value="{{ now()->format('Y-m-d') }}">
-                                <button type="submit" class="btn btn-success w-100">
-                                    <i class="fas fa-paper-plane me-1"></i>Publish Now
-                                </button>
-                            </form>
-                        @else
-                            <form action="{{ route('admin.interviews.update', $interview) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('PUT')
-                                <input type="hidden" name="published_at" value="">
-                                <button type="submit" class="btn btn-warning w-100">
-                                    <i class="fas fa-pause me-1"></i>Unpublish
-                                </button>
-                            </form>
-                        @endif
+                        </a>                    
                         
                         <a href="{{ route('admin.interviews.create') }}?category={{ $interview->category_id }}" 
                            class="btn btn-outline-success">

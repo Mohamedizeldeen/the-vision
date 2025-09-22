@@ -198,13 +198,7 @@
                                 }
                             @endphp
                             
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="publish_status" 
-                                       id="draft" value="draft" {{ $currentStatus == 'draft' ? 'checked' : '' }}>
-                                <label class="form-check-label" for="draft">
-                                    <i class="fas fa-edit text-warning me-1"></i>Save as Draft
-                                </label>
-                            </div>
+                           
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="publish_status" 
                                        id="publish_now" value="publish_now" {{ $currentStatus == 'publish_now' ? 'checked' : '' }}>
@@ -244,7 +238,7 @@
                             <label class="form-label">Event Type</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="event_type" 
-                                       id="in_person" value="in_person" {{ old('event_type', $event->event_type ?? 'in_person') == 'in_person' ? 'checked' : '' }}>
+                                       id="in_person" value="in-person" {{ old('event_type', $event->event_type ?? 'in-person') == 'in-person' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="in_person">
                                     <i class="fas fa-map-marker-alt text-primary me-1"></i>In-Person
                                 </label>
@@ -265,26 +259,7 @@
                             </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="tags" class="form-label">Tags</label>
-                            <input type="text" class="form-control @error('tags') is-invalid @enderror" 
-                                   id="tags" name="tags" value="{{ old('tags', $event->tags) }}" 
-                                   placeholder="Comma separated tags">
-                            <small class="form-text text-muted">Separate tags with commas</small>
-                            @error('tags')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="meta_description" class="form-label">Meta Description</label>
-                            <textarea class="form-control @error('meta_description') is-invalid @enderror" 
-                                      id="meta_description" name="meta_description" rows="3" 
-                                      placeholder="SEO description...">{{ old('meta_description', $event->meta_description) }}</textarea>
-                            @error('meta_description')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                       
                     </div>
                 </div>
 

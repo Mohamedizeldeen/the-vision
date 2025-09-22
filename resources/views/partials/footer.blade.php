@@ -1,51 +1,49 @@
-<!-- Footer -->
-<footer class="bg-black text-white py-12 relative">
-    <div class="container mx-auto px-6">
-        <div class="text-center">
-            <h3 class="text-3xl font-bold mb-6">
-                <span class="text-transparent bg-clip-text" style="background: linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(255, 255, 255) 100%); -webkit-background-clip: text; background-clip: text;">The Vision</span>
-            </h3>
-            <p class="text-gray-400 mb-6 text-lg">Showcasing the inspiring journeys of GCC business leaders</p>
-            
-            <!-- Social Links -->
-            <div class="flex justify-center space-x-6 mb-6">
-                <a href="https://www.linkedin.com/company/thevisionmedia/?viewAsMember=true" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-linkedin fa-2x"></i>
-                </a>
-                <a href="https://www.instagram.com/thevision.media.official_?igsh=MTZmcnRsNTNpbGVsNg%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-instagram fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-twitter fa-2x"></i>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fab fa-youtube fa-2x"></i>
-                </a>
+<!-- Advanced Footer -->
+<footer class="bg-black text-white pt-12 pb-6 relative px-4 sm:px-8 md:px-16">
+    <div class="container mx-auto px-2 sm:px-4 md:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
+            <!-- About -->
+            <div>
+                <img src="{{ asset('img/visionLogoWhite.jpg') }}" alt="The Vision Logo" class="mx-auto md:mx-0 mb-4 h-12" style="width: 100px; height: auto;">
+                <p class="text-gray-400 text-base">Showcasing the inspiring journeys of GCC business leaders.</p>
             </div>
-
             <!-- Quick Links -->
-            <div class="flex justify-center space-x-6 mb-6 text-sm">
-                <a href="{{ route('events.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300">Events</a>
-                <a href="{{ route('interviews.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300">Interviews</a>
-                <a href="{{ route('podcasts.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300">Podcasts</a>
-                @auth
-                    <a href="{{ route('admin.dashboard') }}" class="text-gray-400 hover:text-white transition-colors duration-300">Admin</a>
-                @endauth
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="{{ route('events.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:underline">Events</a></li>
+                    <li><a href="{{ route('interviews.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:underline">Interviews</a></li>
+                    <li><a href="{{ route('podcasts.index') }}" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:underline">Podcasts</a></li>
+                    @auth
+                        <li><a href="{{ route('admin.dashboard') }}" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:underline">Admin</a></li>
+                    @endauth
+                </ul>
             </div>
-
-            <!-- Contact Info -->
-            <div class="mb-6 text-gray-400 text-sm">
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6">
-                    <span><i class="fas fa-envelope mr-2"></i>info@thevision-media.com</span>
-                    <span><i class="fas fa-phone mr-2"></i>+968 775 1766</span>
-                    <span><i class="fas fa-map-marker-alt mr-2"></i>Muscat, Oman</span>
+            <!-- Contact -->
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Contact</h4>
+                <ul class="space-y-2 text-gray-400 text-base">
+                    <li><i class="fas fa-envelope mr-2"></i><a href="mailto:info@thevision-media.com" class="hover:text-white focus:underline">info@thevision-media.com</a></li>
+                    <li><i class="fas fa-phone mr-2"></i><a href="tel:+9687751766" class="hover:text-white focus:underline">+968 775 1766</a></li>
+                    <li><i class="fas fa-map-marker-alt mr-2"></i>Muscat, Oman</li>
+                </ul>
+            </div>
+            <!-- Social -->
+            <div>
+                <h4 class="text-lg font-semibold mb-3">Follow Us</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.linkedin.com/company/thevisionmedia/?viewAsMember=true" target="_blank" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white rounded">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="https://www.instagram.com/thevision.media.official_?igsh=MTZmcnRsNTNpbGVsNg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white rounded">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                    <!-- Add more social links as needed -->
                 </div>
             </div>
-
-            <!-- Copyright -->
-            <div class="text-gray-500 text-sm">
-                © {{ date('Y') }} The Vision. All rights reserved.
-            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm">
+            © {{ date('Y') }} The Vision. All rights reserved.
         </div>
     </div>
 </footer>

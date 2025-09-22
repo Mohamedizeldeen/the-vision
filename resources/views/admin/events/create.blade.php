@@ -123,18 +123,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="event_type" class="form-label">Event Type</label>
-                            <select class="form-select @error('event_type') is-invalid @enderror" 
-                                    id="event_type" name="event_type">
-                                <option value="in-person" {{ old('event_type', 'in-person') == 'in-person' ? 'selected' : '' }}>In-Person</option>
-                                <option value="online" {{ old('event_type') == 'online' ? 'selected' : '' }}>Online</option>
-                                <option value="hybrid" {{ old('event_type') == 'hybrid' ? 'selected' : '' }}>Hybrid</option>
-                            </select>
-                            @error('event_type')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                       
                     </div>
                 </div>
 
@@ -217,7 +206,7 @@
                             <label class="form-label">Event Type</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="event_type" 
-                                       id="in_person" value="in_person" {{ old('event_type', 'in_person') == 'in_person' ? 'checked' : '' }}>
+                                       id="in_person" value="in-person" {{ old('event_type', 'in-person') == 'in-person' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="in_person">
                                     <i class="fas fa-map-marker-alt text-primary me-1"></i>In-Person
                                 </label>
