@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Test Audio</title>
+</head>
+<body>
+    <h1>Audio Test Generator</h1>
+    <p>This will create a test audio file for the podcast player.</p>
+    <button onclick="generateTestAudio()">Generate Test Audio</button>
+    <audio id="testAudio" controls style="display: none;"></audio>
+    <a id="downloadLink" style="display: none;">Download Test Audio</a>
+
+    <script>
+        function generateTestAudio() {
+            // Create audio context
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Create a 30-second test audio with different tones
+            const sampleRate = audioContext.sampleRate;
+            const duration = 30; // seconds
+            const length = sampleRate * duration;
+            const buffer = audioContext.createBuffer(1, length, sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            // Generate test tones
+            for (let i = 0; i < length; i++) {
+                const time = i / sampleRate;
+                // Create a simple melody with different frequencies
+                const frequency = 440 + Math.sin(time * 0.5) * 100; // Varying tone
+                data[i] = Math.sin(2 * Math.PI * frequency * time) * 0.3;
+            }
+            
+            // Convert to WAV
+            const wav = audioBufferToWav(buffer);
+            const blob = new Blob([wav], { type: 'audio/wav' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create download link
+            const link = document.getElementById('downloadLink');
+            link.href = url;
+            link.download = 'gcc-business-leaders-episode-1.wav';
+            link.textContent = 'Download Test Audio File';
+            link.style.display = 'inline';
+            
+            // Show audio player
+            const audio = document.getElementById('testAudio');
+            audio.src = url;
+            audio.style.display = 'block';
+            
+            alert('Test audio generated! Click the download link and save it to the /public/audio/ folder as gcc-business-leaders-episode-1.mp3');
+        }
+        
+        function audioBufferToWav(buffer) {
+            const length = buffer.length;
+            const arrayBuffer = new ArrayBuffer(44 + length * 2);
+            const view = new DataView(arrayBuffer);
+            const sampleRate = buffer.sampleRate;
+            
+            // WAV header
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            };
+            
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + length * 2, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, length * 2, true);
+            
+            // Audio data
+            const data = buffer.getChannelData(0);
+            let offset = 44;
+            for (let i = 0; i < length; i++) {
+                const sample = Math.max(-1, Math.min(1, data[i]));
+                view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7FFF, true);
+                offset += 2;
+            }
+            
+            return arrayBuffer;
+        }
+    </script>
+</body>
+</html>
