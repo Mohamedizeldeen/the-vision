@@ -61,7 +61,7 @@ The Vision Laravel is a modern web application for showcasing GCC business leade
 
 - Laravel 10+
 - MySQL/MariaDB
-- Tailwind CSS or Bootstrap 5
+- Tailwind CSS
 - Blade Templates
 
 ## Contributing
